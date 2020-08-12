@@ -13,10 +13,36 @@ class AllInMap extends StatelessWidget {
           title: Text('All In Map'),
           backgroundColor: Colors.green[900],
         ),
-        body: Center(
-          child: Image(
-            image: NetworkImage(
-                'https://www.rodenstock.com/mediadownload/_images/_live_b2c/medias/0000/00/1d/58/1923327/Rodenstock-Auto-0001-1360x680px-020-min.jpg'),
+        body: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+              ),
+              Container(
+                color: Colors.green[500],
+                width: 100.0,
+                height: 100.0,
+                child: Text('Map'),
+              ),
+              Container(
+                color: Colors.green[500],
+                width: 100.0,
+                height: 100.0,
+                child: Text('Weather'),
+              ),
+              Container(
+                color: Colors.green[500],
+                width: 100.0,
+                height: 100.0,
+                child: Text('Time'),
+              ),
+              Container(
+                height: double.infinity,
+              ),
+            ],
           ),
         ),
       ),
