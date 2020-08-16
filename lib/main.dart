@@ -8,7 +8,7 @@ class AllInMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.greenAccent[200],
+        backgroundColor: Colors.grey[500],
         appBar: AppBar(
           title: Text('All In Map'),
           backgroundColor: Colors.green[900],
@@ -22,22 +22,49 @@ class AllInMap extends StatelessWidget {
                 height: double.infinity,
               ),
               Container(
-                color: Colors.green[500],
+                color: Colors.green[900],
                 width: 100.0,
-                height: 100.0,
-                child: Text('Map'),
+                height: 60.0,
+                child: Center(
+                  child: Text(
+                    'Map',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
               ),
               Container(
-                color: Colors.green[500],
+                color: Colors.green[900],
                 width: 100.0,
-                height: 100.0,
-                child: Text('Weather'),
+                height: 60.0,
+                child: Center(
+                  child: Text(
+                    'Weather',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
               ),
               Container(
-                color: Colors.green[500],
+                color: Colors.green[900],
                 width: 100.0,
-                height: 100.0,
-                child: Text('Time'),
+                height: 60.0,
+                child: Center(
+                  child: Text(
+                    'Time',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
               ),
               Container(
                 height: double.infinity,
