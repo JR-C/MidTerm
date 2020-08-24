@@ -22,51 +22,60 @@ class AllInMap extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Expanded(
-                    child: Container(
-                      color: Colors.teal[900],
-                      width: 125.0,
-                      height: 60.0,
-                      child: Center(
-                        child: Text(
-                          'Map',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 2.0),
+                      child: Container(
+                        color: Colors.teal[900],
+                        width: 125.0,
+                        height: 60.0,
+                        child: Center(
+                          child: Text(
+                            'Map',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      color: Colors.teal[900],
-                      width: 125.0,
-                      height: 60.0,
-                      child: Center(
-                        child: Text(
-                          'Weather',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                      child: Container(
+                        color: Colors.teal[900],
+                        width: 125.0,
+                        height: 60.0,
+                        child: Center(
+                          child: Text(
+                            'Weather',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      color: Colors.teal[900],
-                      width: 125.0,
-                      height: 60.0,
-                      child: Center(
-                        child: Text(
-                          'Time',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: Container(
+                        color: Colors.teal[900],
+                        width: 125.0,
+                        height: 60.0,
+                        child: Center(
+                          child: Text(
+                            'Time',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                            ),
                           ),
                         ),
                       ),
