@@ -23,6 +23,7 @@ class AllInMap extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: FlatButton(
+                      onPressed: () {},
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
@@ -43,6 +44,7 @@ class AllInMap extends StatelessWidget {
                   ),
                   Expanded(
                     child: FlatButton(
+                      onPressed: () {},
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
@@ -63,6 +65,7 @@ class AllInMap extends StatelessWidget {
                   ),
                   Expanded(
                     child: FlatButton(
+                      onPressed: () {},
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
