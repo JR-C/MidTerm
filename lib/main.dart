@@ -22,11 +22,11 @@ class AllInMap extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 2.0),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
-                        width: 125.0,
+                        width: 135.0,
                         height: 60.0,
                         child: Center(
                           child: Text(
@@ -42,11 +42,11 @@ class AllInMap extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 2.0, right: 2.0),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
-                        width: 125.0,
+                        width: 135.0,
                         height: 60.0,
                         child: Center(
                           child: Text(
@@ -62,11 +62,11 @@ class AllInMap extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
-                        width: 125.0,
+                        width: 135.0,
                         height: 60.0,
                         child: Center(
                           child: Text(
