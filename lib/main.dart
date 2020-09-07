@@ -23,7 +23,9 @@ class AllInMap extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print('Clicked Map Tab');
+                      },
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
@@ -44,7 +46,9 @@ class AllInMap extends StatelessWidget {
                   ),
                   Expanded(
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print('Clicked Weather Tab');
+                      },
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
@@ -65,7 +69,9 @@ class AllInMap extends StatelessWidget {
                   ),
                   Expanded(
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print('Clicked Time Tab');
+                      },
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
