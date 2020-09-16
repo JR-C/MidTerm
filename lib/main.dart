@@ -3,9 +3,109 @@ import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 //Starting point of app
-void main() => runApp(AllInMap());
+void main() => runApp(MapsDemo());
 
-class AllInMap extends StatelessWidget {
+class MapsDemo extends StatefulWidget {
+  MapsDemo() : super();
+  @override
+  _MapsDemoState createState() => _MapsDemoState();
+}
+
+class _MapsDemoState extends State<MapsDemo> {
+  Completer<GoogleMapController> _controller = Completer();
+  static const LatLng _center = const LatLng(28.5966, 81.3013);
+  final Set<Marker> _markers = {};
+  LatLng _lastMapPosition = _center;
+  MapType _currentMapType = MapType.normal;
+
+  _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
+
+  _onCameraMove(CameraPosition position) {
+    _lastMapPosition = position.target;
+  }
+
+  _onMapTypeButtonPressed() {
+    setState(() {
+      _currentMapType = _currentMapType == MapType.normal
+          ? MapType.satellite
+          : MapType.normal;
+    });
+  }
+
+  _onAddMarkerButtonPressed() {
+    setState(() {
+      _markers.add(
+        Marker(
+            markerId: MarkerId(_lastMapPosition.toString()),
+            position: _lastMapPosition,
+            infoWindow: InfoWindow(
+              title: 'Title',
+              snippet: 'Snip',
+            )),
+      );
+    });
+  }
+
+  Widget button(Function function, IconData icon) {
+    return FloatingActionButton(
+      onPressed: function,
+      materialTapTargetSize: MaterialTapTargetSize.padded,
+      backgroundColor: Colors.teal[900],
+      child: Icon(
+        icon,
+        size: 36.0,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('All In Map'),
+          backgroundColor: Colors.teal[900],
+        ),
+        body: Stack(
+          children: <Widget>[
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
+              ),
+              mapType: _currentMapType,
+              markers: _markers,
+              onCameraMove: _onCameraMove,
+            ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Column(
+                  children: <Widget>[
+                    button(_onMapTypeButtonPressed, Icons.map),
+                    SizedBox(
+                      height: 16.0,
+                    ),
+                    button(_onAddMarkerButtonPressed, Icons.add_location),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*class AllInMap extends StatelessWidget {
+  //Completer<GoogleMapController> _controller = Completer();
+  //static const LatLng _center = const LatLng(28.5966, 81.3013);
+  //final Set<Marker> _marker = {};
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,9 +125,7 @@ class AllInMap extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: FlatButton(
-                      onPressed: () {
-                        print('Clicked Map Tab');
-                      },
+                      onPressed: () {},
                       padding: EdgeInsets.all(1.0),
                       child: Container(
                         color: Colors.teal[900],
@@ -100,4 +198,54 @@ class AllInMap extends StatelessWidget {
       ),
     );
   }
+}*/
+/*class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Google Maps Demo',
+      home: MapSample(),
+    );
+  }
 }
+
+class MapSample extends StatefulWidget {
+  @override
+  _MapSampleState createState() => _MapSampleState();
+}
+
+class _MapSampleState extends State<MapSample> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: GoogleMap(
+        mapType: MapType.hybrid,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _goToTheLake,
+        label: Text('To School'),
+        icon: Icon(Icons.school),
+      ),
+    );
+  }
+
+  Future<void> _goToTheLake() async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  }
+}*/
