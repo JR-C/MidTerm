@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MapDemo extends StatefulWidget {
-  MapDemo({Key key}) :
+  MapDemo({Key key}) : super(key: key);
   @override
   _MapDemoState createState() => _MapDemoState();
 }
