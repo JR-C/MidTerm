@@ -1,3 +1,4 @@
+import 'package:allinmap/gmap.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -126,7 +127,7 @@ class AllInMap extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => (),
+                            builder: (context) => GMap(),
                           ),
                         );
                         print("pressed");
