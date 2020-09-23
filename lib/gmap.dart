@@ -14,6 +14,10 @@ class _GMapState extends State<GMap> {
       appBar: AppBar(
         title: Text('Map'),
       ),
+      body: Container(
+        alignment: Alignment.center,
+        child: Text('Map Goes Here'),
+      ),
     );
   }
 }
