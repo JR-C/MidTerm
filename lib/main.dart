@@ -126,7 +126,7 @@ class AllInMap extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MapsDemo(),
+                            builder: (context) => (),
                           ),
                         );
                         print("pressed");
