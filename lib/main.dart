@@ -263,9 +263,3 @@ class _MapsDemoState extends State<MapsDemo> {
     );
   }
 }*/
-
-/*class AllInMap extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-  }
-}*/

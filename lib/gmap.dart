@@ -12,16 +12,19 @@ class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Map'),
-        backgroundColor: Colors.teal[900],
-      ),
-      body: GoogleMap(
-        initialCameraPosition: CameraPosition(
-          target: LatLng(28.5966, -81.3013),
-          zoom: 12,
+        appBar: AppBar(
+          title: Text('Map'),
+          backgroundColor: Colors.teal[900],
         ),
-      ),
-    );
+        body: Stack(
+          children: <Widget>[
+            GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(28.5966, -81.3013),
+                zoom: 12,
+              ),
+            ),
+          ],
+        ));
   }
 }
