@@ -10,6 +10,10 @@ class GMap extends StatefulWidget {
 class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Map'),
+      ),
+    );
   }
 }
