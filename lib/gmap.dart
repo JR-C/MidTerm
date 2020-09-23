@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GMap extends StatefulWidget {
-  GMap({Key key})
+  GMap({Key key}) : super(key: key);
+
   @override
   _GMapState createState() => _GMapState();
 }
@@ -9,6 +10,6 @@ class GMap extends StatefulWidget {
 class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
