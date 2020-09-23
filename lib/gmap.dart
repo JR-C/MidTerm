@@ -14,10 +14,13 @@ class _GMapState extends State<GMap> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map'),
+        backgroundColor: Colors.teal[900],
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Text('Map Goes Here'),
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: LatLng(28.5966, -81.3013),
+          zoom: 12,
+        ),
       ),
     );
   }
