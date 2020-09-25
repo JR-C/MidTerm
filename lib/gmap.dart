@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -9,6 +11,26 @@ class GMap extends StatefulWidget {
 }
 
 class _GMapState extends State<GMap> {
+  Set<Marker> _markers = HashSet<Marker>();
+  GoogleMapController _mapController;
+
+  void _onMapCreated(GoogleMapController controller) {
+    _mapController = controller;
+
+    setState(() {
+      _markers.add(
+        Marker(
+          markerId: MarkerId('0'),
+          position: LatLng(28.5966, -81.3013),
+          infoWindow: InfoWindow(
+            title: 'Full Sail University',
+            snippet: 'School of learning',
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +41,12 @@ class _GMapState extends State<GMap> {
         body: Stack(
           children: <Widget>[
             GoogleMap(
+              onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
                 target: LatLng(28.5966, -81.3013),
                 zoom: 12,
               ),
+              markers: _markers,
             ),
           ],
         ));

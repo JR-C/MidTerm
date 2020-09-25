@@ -34,8 +34,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            //mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
+              Image(
+                image: AssetImage('images/map.jpg'),
+                height: 540,
+                fit: BoxFit.cover,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.end,
