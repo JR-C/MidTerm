@@ -28,6 +28,15 @@ class _GMapState extends State<GMap> {
           ),
         ),
       );
+      _markers.add(
+        Marker(
+          markerId: MarkerId('1'),
+          position: LatLng(28.3852, -81.5639),
+          infoWindow: InfoWindow(
+            title: 'Disney World Resort',
+          ),
+        ),
+      );
     });
   }
 
