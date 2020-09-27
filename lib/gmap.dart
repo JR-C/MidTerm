@@ -34,6 +34,7 @@ class _GMapState extends State<GMap> {
           position: LatLng(28.3852, -81.5639),
           infoWindow: InfoWindow(
             title: 'Disney World Resort',
+            snippet: 'Place of Magic',
           ),
         ),
       );
@@ -56,6 +57,7 @@ class _GMapState extends State<GMap> {
                 zoom: 12,
               ),
               markers: _markers,
+              myLocationEnabled: true,
             ),
           ],
         ));
