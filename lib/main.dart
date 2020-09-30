@@ -54,7 +54,6 @@ class _MainScreenState extends State<MainScreen> {
                             builder: (context) => GMap(),
                           ),
                         );
-                        print("pressed");
                       },
                       padding: EdgeInsets.all(1.0),
                       child: Container(
