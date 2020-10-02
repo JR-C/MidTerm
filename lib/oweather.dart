@@ -11,6 +11,16 @@ class OpenWeather extends StatefulWidget {
 class _OpenWeatherState extends State<OpenWeather> {
   @override
   Widget build(BuildContext context) {
-    return Text('TEST');
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height / 3,
+            width: MediaQuery.of(context).size.height,
+            color: Colors.teal[900],
+          ),
+        ],
+      ),
+    );
   }
 }
