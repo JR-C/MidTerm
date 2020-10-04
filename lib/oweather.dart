@@ -18,6 +18,21 @@ class _OpenWeatherState extends State<OpenWeather> {
             height: MediaQuery.of(context).size.height / 3,
             width: MediaQuery.of(context).size.height,
             color: Colors.teal[900],
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    "Weather",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
