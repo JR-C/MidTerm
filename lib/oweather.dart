@@ -32,6 +32,10 @@ class _OpenWeatherState extends State<OpenWeather> {
             Center(
               child: Text(
                 temperature.toString() + '\u2109',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50.0,
+                ),
               ),
             ),
           ],
