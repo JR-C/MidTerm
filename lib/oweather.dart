@@ -11,6 +11,7 @@ class OpenWeather extends StatefulWidget {
 
 class _OpenWeatherState extends State<OpenWeather> {
   int temperature = 0;
+  String location = 'Orlando';
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,10 @@ class _OpenWeatherState extends State<OpenWeather> {
                   fontSize: 50.0,
                 ),
               ),
+            ),
+            Text(
+              location,
+              style: TextStyle(color: Colors.white, fontSize: 40.0),
             ),
           ],
         ),
