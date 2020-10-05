@@ -47,6 +47,25 @@ class _OpenWeatherState extends State<OpenWeather> {
                 ),
               ],
             ),
+            Column(
+              children: <Widget>[
+                Container(
+                    width: 300,
+                    child: TextField(
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                      decoration: InputDecoration(
+                          hintText: 'Search Location...',
+                          hintStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          )),
+                    ))
+              ],
+            ),
           ],
         ),
       ),
