@@ -30,18 +30,22 @@ class _OpenWeatherState extends State<OpenWeather> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: Text(
-                temperature.toString() + '\u2109',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50.0,
+            Column(
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    temperature.toString() + '\u2109',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 50.0,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Text(
-              location,
-              style: TextStyle(color: Colors.white, fontSize: 40.0),
+                Text(
+                  location,
+                  style: TextStyle(color: Colors.white, fontSize: 40.0),
+                ),
+              ],
             ),
           ],
         ),
