@@ -43,6 +43,11 @@ class _OpenWeatherState extends State<OpenWeather> {
     });
   }
 
+  void onTextFieldSubmitted(String input) {
+    fetchSearch(input);
+    fetchLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,6 +87,9 @@ class _OpenWeatherState extends State<OpenWeather> {
                 Container(
                     width: 300,
                     child: TextField(
+                      onSubmitted: (String input) {
+                        onTextFieldSubmitted(input);
+                      },
                       style: TextStyle(color: Colors.white, fontSize: 25),
                       decoration: InputDecoration(
                           hintText: 'Search Location...',
