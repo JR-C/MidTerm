@@ -15,6 +15,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   int temperature = 0;
   String location = 'Orlando';
   int woeid = 2466256;
+  String weather = 'clear';
 
   String searchApiUrl =
       'https://www.metaweather.com/api/location/search/?query=';
@@ -33,6 +34,13 @@ class _OpenWeatherState extends State<OpenWeather> {
   void fetchLocation() async {
     var locationResult = await http.get(locationApiUrl + woeid.toString());
     var result = json.decode(locationResult.body);
+    var consolidated_weather = result['consolidate_weather'];
+    var data = consolidated_weather[0];
+
+    setState(() {
+      temperature = data['the_temp'].round();
+      weather = data['weather_state_name'].replaceAll(' ', '').toLowerCase();
+    });
   }
 
   @override
