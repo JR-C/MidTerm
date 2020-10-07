@@ -18,7 +18,7 @@ class _OpenWeatherState extends State<OpenWeather> {
 
   String searchApiUrl =
       'https://www.metaweather.com/api/location/search/?query=';
-  String 
+  String locationApiUrl = 'https://www.metaweather.com/api/location/';
 
   void fetchSearch(String search) async {
     var searchResult = await http.get(searchApiUrl + search);
@@ -28,6 +28,11 @@ class _OpenWeatherState extends State<OpenWeather> {
       location = result['title'];
       woeid = result['woeid'];
     });
+  }
+
+  void fetchLocation() async {
+    var locationResult = await http.get(locationApiUrl + woeid.toString());
+    var result = json.decode(locationResult.body);
   }
 
   @override
