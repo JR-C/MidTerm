@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class OpenWeather extends StatefulWidget {
   @override
@@ -12,6 +14,21 @@ class OpenWeather extends StatefulWidget {
 class _OpenWeatherState extends State<OpenWeather> {
   int temperature = 0;
   String location = 'Orlando';
+  int woeid = 2466256;
+
+  String searchApiUrl =
+      'https://www.metaweather.com/api/location/search/?query=';
+  String 
+
+  void fetchSearch(String search) async {
+    var searchResult = await http.get(searchApiUrl + search);
+    var result = json.decode(searchResult.body)[0];
+
+    setState(() {
+      location = result['title'];
+      woeid = result['woeid'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
