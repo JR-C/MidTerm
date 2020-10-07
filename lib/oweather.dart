@@ -49,7 +49,7 @@ class _OpenWeatherState extends State<OpenWeather> {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            'images/clear.png',
+            'images/$weather.png',
           ),
           fit: BoxFit.cover,
         ),
