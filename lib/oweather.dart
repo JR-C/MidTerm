@@ -47,9 +47,9 @@ class _OpenWeatherState extends State<OpenWeather> {
     });
   }
 
-  void onTextFieldSubmitted(String input) {
-    fetchSearch(input);
-    fetchLocation();
+  void onTextFieldSubmitted(String input) async {
+    await fetchSearch(input);
+    await fetchLocation();
   }
 
   @override
@@ -65,7 +65,9 @@ class _OpenWeatherState extends State<OpenWeather> {
           ),
         ),
         child: temperature == null
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
             : Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Column(
