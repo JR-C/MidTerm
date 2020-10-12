@@ -14,6 +14,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   int woeid = 2450022;
   String weather = 'clear';
   String abbrev = '';
+  String errorMessage = '';
 
   String searchApiUrl =
       'https://www.metaweather.com/api/location/search/?query=';
@@ -25,13 +26,19 @@ class _OpenWeatherState extends State<OpenWeather> {
   }
 
   void fetchSearch(String input) async {
-    var searchResult = await http.get(searchApiUrl + input);
-    var result = json.decode(searchResult.body)[0];
+    try {
+      var searchResult = await http.get(searchApiUrl + input);
+      var result = json.decode(searchResult.body)[0];
 
-    setState(() {
-      location = result["title"];
-      woeid = result["woeid"];
-    });
+      setState(() {
+        location = result["title"];
+        woeid = result["woeid"];
+      });
+    } catch (error) {
+      setState(() {
+        errorMessage = "Sorry, no data available. Try Another Location";
+      });
+    }
   }
 
   void fetchLocation() async {
@@ -121,6 +128,14 @@ class _OpenWeatherState extends State<OpenWeather> {
                             ),
                           ),
                         ),
+                        Text(
+                          errorMessage,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.redAccent,
+                            fontSize: 15.0,
+                          ),
+                        )
                       ],
                     ),
                   ],
