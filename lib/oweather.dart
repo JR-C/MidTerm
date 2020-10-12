@@ -19,6 +19,11 @@ class _OpenWeatherState extends State<OpenWeather> {
       'https://www.metaweather.com/api/location/search/?query=';
   String locationApiUrl = 'https://www.metaweather.com/api/location/';
 
+  initState() {
+    super.initState();
+    fetchLocation();
+  }
+
   void fetchSearch(String input) async {
     var searchResult = await http.get(searchApiUrl + input);
     var result = json.decode(searchResult.body)[0];
