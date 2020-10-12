@@ -13,6 +13,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   String location = 'Miami';
   int woeid = 2450022;
   String weather = 'clear';
+  String abbrev = '';
 
   String searchApiUrl =
       'https://www.metaweather.com/api/location/search/?query=';
@@ -37,6 +38,7 @@ class _OpenWeatherState extends State<OpenWeather> {
     setState(() {
       temperature = data["the_temp"].round();
       weather = data["weather_state_name"].replaceAll(' ', '').toLowerCase();
+      abbrev = data["weather_state_abbr"];
     });
   }
 
@@ -65,6 +67,13 @@ class _OpenWeatherState extends State<OpenWeather> {
             children: <Widget>[
               Column(
                 children: <Widget>[
+                  Center(
+                      child: Image.network(
+                    'https://www.metaweather.com/static/img/weather/png/' +
+                        abbrev +
+                        '.png',
+                    width: 100,
+                  )),
                   Center(
                     child: Text(
                       (temperature * 9 / 5 + 32).round().toString() + '\u2109',
