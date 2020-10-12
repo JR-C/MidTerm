@@ -9,7 +9,7 @@ class OpenWeather extends StatefulWidget {
 }
 
 class _OpenWeatherState extends State<OpenWeather> {
-  int temperature = 0;
+  int temperature;
   String location = 'Miami';
   int woeid = 2450022;
   String weather = 'clear';
@@ -64,63 +64,66 @@ class _OpenWeatherState extends State<OpenWeather> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  Center(
-                      child: Image.network(
-                    'https://www.metaweather.com/static/img/weather/png/' +
-                        abbrev +
-                        '.png',
-                    width: 100,
-                  )),
-                  Center(
-                    child: Text(
-                      (temperature * 9 / 5 + 32).round().toString() + '\u2109',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 50.0,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    location,
-                    style: TextStyle(color: Colors.white, fontSize: 40.0),
-                  ),
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    width: 300,
-                    child: TextField(
-                      onSubmitted: (String input) {
-                        onTextFieldSubmitted(input);
-                      },
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                      decoration: InputDecoration(
-                        hintText: 'Search Location...',
-                        hintStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
+        child: temperature == null
+            ? Center(child: CircularProgressIndicator())
+            : Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Center(
+                            child: Image.network(
+                          'https://www.metaweather.com/static/img/weather/png/' +
+                              abbrev +
+                              '.png',
+                          width: 100,
+                        )),
+                        Center(
+                          child: Text(
+                            (temperature * 9 / 5 + 32).round().toString() +
+                                '\u2109',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 50.0,
+                            ),
+                          ),
                         ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.white,
+                        Text(
+                          location,
+                          style: TextStyle(color: Colors.white, fontSize: 40.0),
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                ],
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          width: 300,
+                          child: TextField(
+                            onSubmitted: (String input) {
+                              onTextFieldSubmitted(input);
+                            },
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                            decoration: InputDecoration(
+                              hintText: 'Search Location...',
+                              hintStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }
