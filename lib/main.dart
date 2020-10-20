@@ -33,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
           title: Text('All In Map'),
           backgroundColor: Colors.teal[900],
         ),
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.end,

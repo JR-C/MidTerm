@@ -33,6 +33,7 @@ class _OpenWeatherState extends State<OpenWeather> {
       setState(() {
         location = result["title"];
         woeid = result["woeid"];
+        errorMessage = '';
       });
     } catch (error) {
       setState(() {
@@ -53,6 +54,8 @@ class _OpenWeatherState extends State<OpenWeather> {
       abbrev = data["weather_state_abbr"];
     });
   }
+
+  void fetchLocationDay() {}
 
   void onTextFieldSubmitted(String input) async {
     await fetchSearch(input);
