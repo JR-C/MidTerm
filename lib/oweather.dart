@@ -55,7 +55,10 @@ class _OpenWeatherState extends State<OpenWeather> {
     });
   }
 
-  void fetchLocationDay() {}
+  void fetchLocationDay() async {
+    var today = new DateTime.now();
+    for (var i)
+  }
 
   void onTextFieldSubmitted(String input) async {
     await fetchSearch(input);
