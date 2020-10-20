@@ -28,6 +28,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   initState() {
     super.initState();
     fetchLocation();
+    fetchLocationDay();
   }
 
   void fetchSearch(String input) async {
@@ -83,6 +84,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   void onTextFieldSubmitted(String input) async {
     await fetchSearch(input);
     await fetchLocation();
+    await fetchLocationDay();
   }
 
   @override
@@ -126,10 +128,19 @@ class _OpenWeatherState extends State<OpenWeather> {
                             ),
                           ),
                         ),
-                        Text(
-                          location,
-                          style: TextStyle(color: Colors.white, fontSize: 40.0),
+                        Center(
+                          child: Text(
+                            location,
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 40.0),
+                          ),
                         ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        forecastElement(),
+                        forecastElement(),
                       ],
                     ),
                     Column(
@@ -170,4 +181,22 @@ class _OpenWeatherState extends State<OpenWeather> {
       ),
     );
   }
+}
+
+Widget ForcastElement(daysFromNow)
+{
+  var now = new DateTime.now();
+  var dayFromNow = now.add(new Duration(days: daysFromNow));
+  return Container(
+    decoration: BoxDecoration(
+      color: Color.fromRGBO(205, 212, 228, 0.2),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      children: <Widget>[
+        Text(new DateFormat.E().format(dayFromNow),)
+        style: TextStyle()
+      ],
+    ),
+  )
 }
