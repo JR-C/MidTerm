@@ -57,7 +57,12 @@ class _OpenWeatherState extends State<OpenWeather> {
 
   void fetchLocationDay() async {
     var today = new DateTime.now();
-    for (var i)
+    for (var i = 0; i < 7; i++) {
+      var locationDayResult = await http.get(locationApiUrl +
+          woeid.toString() +
+          '/' +
+          today.add(new Duration(days: i + 1)).toString());
+    }
   }
 
   void onTextFieldSubmitted(String input) async {
