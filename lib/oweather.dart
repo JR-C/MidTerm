@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class OpenWeather extends StatefulWidget {
   @override
@@ -10,10 +11,14 @@ class OpenWeather extends StatefulWidget {
 
 class _OpenWeatherState extends State<OpenWeather> {
   int temperature;
+  var minTempForecast = new List(7);
+  var maxTempForecast = new List(7);
+
   String location = 'Miami';
   int woeid = 2450022;
   String weather = 'clear';
   String abbrev = '';
+  var abbrevForecast = new List(7);
   String errorMessage = '';
 
   String searchApiUrl =
@@ -61,7 +66,17 @@ class _OpenWeatherState extends State<OpenWeather> {
       var locationDayResult = await http.get(locationApiUrl +
           woeid.toString() +
           '/' +
-          today.add(new Duration(days: i + 1)).toString());
+          new DateFormat('y/M/d')
+              .format(today.add(new Duration(days: i + 1)))
+              .toString());
+      var result = json.decode(locationDayResult.body);
+      var data = result[0];
+
+      setState(() {
+        minTempForecast = data["min_temp"].round();
+        maxTempForecast = data["max_temp"].round();
+        abbrevForecast = data["weather_state_abbr"];
+      });
     }
   }
 
