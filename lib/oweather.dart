@@ -139,8 +139,8 @@ class _OpenWeatherState extends State<OpenWeather> {
                     ),
                     Row(
                       children: <Widget>[
-                        forecastElement(),
-                        forecastElement(),
+                        forecastElement(1),
+                        forecastElement(2),
                       ],
                     ),
                     Column(
@@ -183,8 +183,7 @@ class _OpenWeatherState extends State<OpenWeather> {
   }
 }
 
-Widget ForcastElement(daysFromNow)
-{
+Widget forecastElement(daysFromNow) {
   var now = new DateTime.now();
   var dayFromNow = now.add(new Duration(days: daysFromNow));
   return Container(
@@ -194,9 +193,11 @@ Widget ForcastElement(daysFromNow)
     ),
     child: Column(
       children: <Widget>[
-        Text(new DateFormat.E().format(dayFromNow),)
-        style: TextStyle()
+        Text(
+          new DateFormat.E().format(dayFromNow),
+          style: TextStyle(color: Colors.white, fontSize: 25),
+        )
       ],
     ),
-  )
+  );
 }
