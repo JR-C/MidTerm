@@ -1,7 +1,7 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
 import 'package:intl/intl.dart';
 
 class OpenWeather extends StatefulWidget {
@@ -11,14 +11,13 @@ class OpenWeather extends StatefulWidget {
 
 class _OpenWeatherState extends State<OpenWeather> {
   int temperature;
-  var minTempForecast = new List(7);
-  var maxTempForecast = new List(7);
-
+  var minTemperatureForecast = new List(7);
+  var maxTemperatureForecast = new List(7);
   String location = 'Miami';
   int woeid = 2450022;
   String weather = 'clear';
-  String abbrev = '';
-  var abbrevForecast = new List(7);
+  String abbreviation = '';
+  var abbreviationForecast = new List(7);
   String errorMessage = '';
 
   String searchApiUrl =
@@ -43,7 +42,7 @@ class _OpenWeatherState extends State<OpenWeather> {
       });
     } catch (error) {
       setState(() {
-        errorMessage = "Sorry, no data available. Try Another Location";
+        errorMessage = "Sorry, no data available. Try Another Location.";
       });
     }
   }
@@ -57,7 +56,7 @@ class _OpenWeatherState extends State<OpenWeather> {
     setState(() {
       temperature = data["the_temp"].round();
       weather = data["weather_state_name"].replaceAll(' ', '').toLowerCase();
-      abbrev = data["weather_state_abbr"];
+      abbreviation = data["weather_state_abbr"];
     });
   }
 
@@ -74,9 +73,9 @@ class _OpenWeatherState extends State<OpenWeather> {
       var data = result[0];
 
       setState(() {
-        minTempForecast = data["min_temp"].round();
-        maxTempForecast = data["max_temp"].round();
-        abbrevForecast = data["weather_state_abbr"];
+        minTemperatureForecast = data["min_temp"].round();
+        maxTemperatureForecast = data["max_temp"].round();
+        abbreviationForecast[i] = data["weather_state_abbr"];
       });
     }
   }
@@ -112,12 +111,13 @@ class _OpenWeatherState extends State<OpenWeather> {
                     Column(
                       children: <Widget>[
                         Center(
-                            child: Image.network(
-                          'https://www.metaweather.com/static/img/weather/png/' +
-                              abbrev +
-                              '.png',
-                          width: 100,
-                        )),
+                          child: Image.network(
+                            'https://www.metaweather.com/static/img/weather/png/' +
+                                abbreviation +
+                                '.png',
+                            width: 100,
+                          ),
+                        ),
                         Center(
                           child: Text(
                             (temperature * 9 / 5 + 32).round().toString() +
@@ -137,11 +137,19 @@ class _OpenWeatherState extends State<OpenWeather> {
                         ),
                       ],
                     ),
-                    Row(
-                      children: <Widget>[
-                        forecastElement(1),
-                        forecastElement(2),
-                      ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: <Widget>[
+                          forecastElement(1),
+                          forecastElement(2),
+                          forecastElement(3),
+                          forecastElement(4),
+                          forecastElement(5),
+                          forecastElement(6),
+                          forecastElement(7),
+                        ],
+                      ),
                     ),
                     Column(
                       children: <Widget>[
@@ -185,19 +193,29 @@ class _OpenWeatherState extends State<OpenWeather> {
 
 Widget forecastElement(daysFromNow) {
   var now = new DateTime.now();
-  var dayFromNow = now.add(new Duration(days: daysFromNow));
-  return Container(
-    decoration: BoxDecoration(
-      color: Color.fromRGBO(205, 212, 228, 0.2),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Column(
-      children: <Widget>[
-        Text(
-          new DateFormat.E().format(dayFromNow),
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        )
-      ],
+  var oneDayFromNow = now.add(new Duration(days: daysFromNow));
+  return Padding(
+    padding: const EdgeInsets.only(left: 16.0),
+    child: Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(205, 212, 228, 0.2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              new DateFormat.E().format(oneDayFromNow),
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            Text(
+              new DateFormat.MMMd().format(oneDayFromNow),
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ],
+        ),
+      ),
     ),
   );
 }

@@ -16,6 +16,7 @@ dependencies:
 # weather: ^1.2.3
   http: ^0.12.2
   intl: ^0.16.1
+ # geolocator: ^6.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:allinmap/Time.dart';
 import 'package:allinmap/gmap.dart';
 import 'package:allinmap/oweather.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,12 @@ class _MainScreenState extends State<MainScreen> {
                   Expanded(
                     child: FlatButton(
                       onPressed: () {
-                        print('Clicked Time Tab');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Time(),
+                          ),
+                        );
                       },
                       padding: EdgeInsets.all(1.0),
                       child: Container(
