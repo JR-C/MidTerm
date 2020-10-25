@@ -1,3 +1,4 @@
+import 'package:allinmap/clockView.dart';
 import 'package:flutter/material.dart';
 
 class Time extends StatefulWidget {
@@ -8,11 +9,12 @@ class Time extends StatefulWidget {
 class _TimeState extends State<Time> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Container(
-        child: Stack(),
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        color: Color(0xFF2D2F41),
+        child: ClockView(),
       ),
-      color: Color.fromRGBO(8, 25, 35, 1),
     );
   }
 }
